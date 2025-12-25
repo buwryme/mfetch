@@ -431,33 +431,6 @@ inline std::vector<std::string> render_info_lines(const Config &cfg) {
     // term
     push_templated("term", "term", get_terminal(), -1);
 
-    // pkgs
-    {
-        std::string raw = get_packages();
-        std::unordered_map<std::string,std::string> extra;
-        std::vector<std::string> parts;
-        std::istringstream ss(raw);
-        std::string token;
-        while (std::getline(ss, token, ',')) parts.push_back(trim_copy(token));
-        if (!parts.empty()) {
-            std::istringstream p0(parts[0]);
-            std::string n0, m0;
-            p0 >> n0;
-            std::getline(p0, m0);
-            extra["n-pkg1"] = n0;
-            extra["pkgmgr1"] = trim_copy(m0);
-        }
-        if (parts.size() > 1) {
-            std::istringstream p1(parts[1]);
-            std::string n1, m1;
-            p1 >> n1;
-            std::getline(p1, m1);
-            extra["n-pkgs2"] = n1;
-            extra["pkgmgr2"] = trim_copy(m1);
-        }
-        push_templated("pkgs", "pkgs", raw, -1, extra);
-    }
-
     // mounts
     {
         auto disks = get_disks();
@@ -499,6 +472,33 @@ inline std::vector<std::string> render_info_lines(const Config &cfg) {
             extra["partition"] = part_norm;
             push_templated("mnts", "mnt", mountpoint, (int)i, extra);
         }
+    }
+
+    // pkgs
+    {
+        std::string raw = get_packages();
+        std::unordered_map<std::string,std::string> extra;
+        std::vector<std::string> parts;
+        std::istringstream ss(raw);
+        std::string token;
+        while (std::getline(ss, token, ',')) parts.push_back(trim_copy(token));
+        if (!parts.empty()) {
+            std::istringstream p0(parts[0]);
+            std::string n0, m0;
+            p0 >> n0;
+            std::getline(p0, m0);
+            extra["n-pkg1"] = n0;
+            extra["pkgmgr1"] = trim_copy(m0);
+        }
+        if (parts.size() > 1) {
+            std::istringstream p1(parts[1]);
+            std::string n1, m1;
+            p1 >> n1;
+            std::getline(p1, m1);
+            extra["n-pkgs2"] = n1;
+            extra["pkgmgr2"] = trim_copy(m1);
+        }
+        push_templated("pkgs", "pkgs", raw, -1, extra);
     }
 
     // assemble final lines honoring indices

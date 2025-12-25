@@ -39,7 +39,7 @@ top_padding = 6
 bottom_padding = 3
 
 [format]
-hostname = "└─ host: [hostname -lower -color #ffd9b3]"
+hostname = "[0]└─ host: [hostname -lower -color #ffd9b3]"
 kernel   = "   ├─ kernel: [k -lower -color #ffb3b3] [v -lower -color #ffe0e0]"
 os       = "   ├─ os: [os -lower -no-platform-tokens -color #d6f0ff]"
 cpu      = "   ├─ cpu: [cpu -lower -no-brand -no-speed -color #ccffe6]"
