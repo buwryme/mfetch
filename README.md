@@ -7,6 +7,7 @@ MFetch (Minimal Fetch) is a system information fetcher with wide customizability
 Right now, the configuration of it is hardcoded to `data/mfetch.toml`, relative to the working folder the binary is running in.
 MFetch renders an ASCII art besides the sysinfo block.
 For an example of a MFetch configuration, you can view the `mfetch.toml` file inside the `data` folder.
+Without a configuration, it sticks to... ugly defaults.
 
 ### Can I install it on my system?
 
