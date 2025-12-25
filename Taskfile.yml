@@ -1,0 +1,45 @@
+version: '3'
+
+vars:
+  cc: "clang++"
+
+  in: "source/entry.cpp"
+  out: "mfetch"
+  outf: "build"
+
+  data: "data"
+
+tasks:
+  build:
+    desc: builds mfetch
+    cmds:
+      - sh -c 'if [ ! -d "{{.outf}}" ]; then mkdir "{{.outf}}"; fi'
+      - sh -c "{{.cc}} {{.in}} -o {{.outf}}/{{.out}}"
+      - cp ./{{.data}}/ ./{{.outf}} -r
+    silent: true
+  run:
+    desc: runs mfetch
+    cmds:
+      - sh -c "pushd {{.outf}} >/dev/null && ./{{.out}} && popd >/dev/null"
+    silent: true
+  2txt:
+    desc: exports project into a .txt
+    cmds:
+      - sh -c "dir2txt ."
+    silent: true
+  clean:
+    desc: cleans artifacts
+    cmds:
+      - rm ._*.txt -rf
+      - rm {{.outf}} -rf
+    silent: true
+  txtclean:
+    desc: cleans txt artifacts
+    cmds:
+      - rm ._*.txt -rf
+    silent: true
+  buildclean:
+    desc: cleans build artifacts
+    cmds:
+      - rm {{.outf}} -rf
+    silent: true
