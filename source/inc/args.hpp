@@ -1,11 +1,7 @@
 #pragma once
 
 #include <string>
-#include <vector>
 #include <iostream>
-#include <cstdlib>
-#include <cstring>
-#include <algorithm>
 
 namespace args_ns
 {
@@ -67,17 +63,12 @@ namespace args_ns
             }
             else if (arg[0] == '-')
             {
-                // Handle GNU-style grouped short options? e.g. -vc path?
-                // For now, let's keep it simple but strict on unknown flags to act like coreutils
                 args.error = true;
                 args.error_msg = "Unrecognized option '" + arg + "'";
                 return args;
             }
             else
             {
-                // Positional arguments? We don't really have any yet.
-                // Treat as error or ignore?
-                // Coreutils usually error on unexpected positionals if they don't take files.
                 args.error = true;
                 args.error_msg = "Unexpected argument '" + arg + "'";
                 return args;

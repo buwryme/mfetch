@@ -23,7 +23,6 @@ namespace renderer_ns
         return ss.str();
     }
 
-    // Improved visible length for UTF-8 and ANSI
     inline size_t visible_len_fn(const std::string &s)
     {
         size_t len = 0;
