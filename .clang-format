@@ -1,0 +1,33 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 0
+UseTab: Never
+BreakBeforeBraces: Allman
+AllowShortFunctionsOnASingleLine: false
+
+IndentWrappedFunctionNames: true
+IndentCaseLabels: true
+IndentPPDirectives: AfterHash
+IndentExternBlock: AfterExternBlock
+
+NamespaceIndentation: All
+IndentAccessModifiers: true
+
+BraceWrapping:
+  AfterNamespace: true
+  AfterClass: true
+  AfterStruct: true
+  AfterFunction: true
+  IndentBraces: true
+  SplitEmptyNamespace: false
+  SplitEmptyRecord: false
+  SplitEmptyFunction: false
+
+MaxEmptyLinesToKeep: 2
+
+# force a blank line after #pragma once
+IncludeBlocks: Preserve
+SortIncludes: false
+
+# ensure blank lines between preprocessor and code
+AlwaysBreakAfterDefinitionReturnType: None
