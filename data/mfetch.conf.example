@@ -1,0 +1,90 @@
+# Example mfetch configuration with separate label/output colors
+
+[ascii]
+art = """
+       >> {user} @ {host} //
+ ₍^. .^₎⟆ ;
+"""
+
+gap_size = 1
+
+# Title with bold styling
+[[module]]
+type = "host"
+format = ">> {user} @ {host} //"
+color = "bold cyan"
+indent = -4
+
+# Kernel with bold white output
+[[module]]
+type = "kernel"
+label = "krnl"
+format = "{kernel}"
+color_label = "dim white"
+color_out = "bold white"
+
+# Shell with custom colors
+[[module]]
+type = "sh"
+format = "{sh}"
+color_label = "yellow"
+color_out = "bold #00ff00"
+
+# Terminal
+[[module]]
+type = "term"
+format = "{term}"
+color_label = "magenta"
+color_out = "italic cyan"
+
+# Separator
+[[module]]
+type = "sep"
+format = "....................."
+color = "dim white"
+
+# WM and DE
+[[module]]
+type = "wm"
+color_label = "blue"
+color_out = "bold blue"
+
+[[module]]
+type = "de"
+color_label = "blue"
+color_out = "bold blue"
+
+# Another separator
+[[module]]
+type = "sep"
+format = "..................................."
+color = "dim white"
+
+# CPU with hex color
+[[module]]
+type = "cpu"
+color_label = "red"
+color_out = "bold #ff6b6b"
+
+# GPU (auto-expands)
+[[module]]
+type = "gpu"
+color_label = "green"
+color_out = "bold green"
+
+# Final separator
+[[module]]
+type = "sep"
+format = "..................................."
+color = "dim white"
+
+# Memory with combined styles
+[[module]]
+type = "ram"
+color_label = "cyan"
+color_out = "bold underline #00ffff"
+
+[[module]]
+type = "swap"
+color_label = "cyan"
+color_out = "dim cyan"
